@@ -72,7 +72,7 @@ if _name_ == "_main_":
     #ne pas oublier de commenter dans la question 7 !
 
     #b contour !
-    imgContour1 = cv.imread(r"C:\Users\33783\PycharmProjects\Tp_traitement_dimage2\diagonal.png")
+    imgContour1 = cv.imread(r"diagonal.png")
     plt.figure()
     plt.imshow(imgContour1)
     
