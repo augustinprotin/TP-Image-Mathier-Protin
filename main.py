@@ -53,6 +53,7 @@ if __name__ == "__main__":
     plt.figure()
     #2
     plt.imshow(img)
+    
 
     #3 commenter le code de la fonction de fourrier 2d
 
@@ -61,20 +62,78 @@ if __name__ == "__main__":
     #commenter l'image 3d et la 2d en corrélation
 
     #question 6
-    img2 = atom(128, 128, 0, 0.1)
+    '''img2 = atom(128, 128, 0, 0.1)
     img3 = atom(128, 128, 0.3, 0.3)
-    img4 = atom(128, 128, -0.3, 0.1)
+    img4 = atom(128, 128, -0.3, 0.1)'''
 
-    fourier2d(img2, 1)
+    '''fourier2d(img2, 1)
     fourier2d(img3, 1)
-    fourier2d(img4, 1)
+    fourier2d(img4, 1)'''
 
     #ne pas oublier de commenter dans la question 7 !
 
     #b contour !
-    imgContour1 = cv.imread(r"diagonal.png")
+    imgContour1 = cv.imread(r"C:/Users/augus\Documents/Ecole/TP Image/TP-Image-Mathier-Protin/diagonal.png")
     plt.figure()
     plt.imshow(imgContour1)
     
 
     plt.show()
+
+    # c ne pas oublier de commenter la corrélation des deux spectres !
+    # 3 conclure sur la localisation d"une rupture dans le domaine fréquentiel
+
+    # c) textures !
+    imgMetal = cv.imread(r"C:/Users/augus\Documents/Ecole/TP Image/TP-Image-Mathier-Protin/Metal0007GP.png")
+    plt.figure()
+    plt.imshow(imgMetal)
+    imgMetal1Grey = cv.cvtColor(imgMetal, cv.COLOR_RGB2GRAY)
+    fourier2d(imgMetal1Grey, 1)
+
+
+
+    imgWater = cv.imread(r"C:/Users/augus\Documents/Ecole/TP Image/TP-Image-Mathier-Protin/Water0000GP.png")
+    plt.figure()
+    plt.imshow(imgWater)
+    imgWater1Grey = cv.cvtColor(imgWater, cv.COLOR_RGB2GRAY)
+    fourier2d(imgWater1Grey, 1)
+
+    imgLeaves = cv.imread(r"C:/Users/augus\Documents/Ecole/TP Image/TP-Image-Mathier-Protin/Leaves0012GP.png")
+    plt.figure()
+    plt.imshow(imgLeaves)
+    imgLeaves1Grey = cv.cvtColor(imgLeaves, cv.COLOR_RGB2GRAY)
+    fourier2d(imgLeaves1Grey, 1)
+
+    #enfait ca permet de deviner grossièrement les formes et pattern dans l'image, comme dans le métal on a des lignes horizontales
+    # -> on a des lignes verticales, inversémenet pour les lignes verticales.
+    #Pour les feuilles, c'est très destructurées l'image de base donc la TF l'est aussi
+    #Pour l'eau, c'est destructuré mais pas tant parceque ya quans même des formes horizontales -> formes vertiales dans la tf.
+
+
+    plt.show()
+
+
+    #exercice 3, 1)
+
+    imgAtom = atom(128, 128, 0.15, 0.37)
+    plt.imshow(imgAtom)
+
+
+
+    #2) et 3), binarisation de l'image avec un seuil de 8 en tout cas je crois
+    bin_np = (imgAtom >= 0).astype(np.uint8)
+
+    plt.figure()
+    plt.imshow(bin_np)
+
+    fe = 1
+    #4 transfo de fourrier du bin_np
+    #fourier2d(bin_np, fe)
+
+    #5 sous échantillonage avec fe = 0.5
+    fourier2d(bin_np, fe/2)
+
+    plt.show()
+
+
+
